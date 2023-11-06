@@ -1,4 +1,5 @@
-Simple Shell : Readme file 
+Simple Shell :
+
 command-line shell code written in [C language]
 
 # Features : 
