@@ -2,13 +2,13 @@ Simple Shell :
 
 command-line shell code written in [C language]
 
-# Features : 
-- basic command execution ex ( ls, pwd,cd,...) 
+# Features :
+- basic command execution ex ( ls, pwd,cd,...)
 
 
 
 
-# Authors : 
+# Authors :
 
 - Huzaifa Elnaeem
 - Sahar Ali
