@@ -99,7 +99,7 @@ void f_cmd(info_st *info)
 	if (!j)
 		return;
 
-	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+	path = f_path(info, get_env(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -107,7 +107,7 @@ void f_cmd(info_st *info)
 	}
 	else
 	{
-		if ((prompt(info) || _getenv(info, "PATH=")
+		if ((prompt(info) || get_env(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
