@@ -99,5 +99,3 @@ char *starts_with(const char *hstr, const char *prefix)
 			return (NULL);
 	return ((char *)hstr);
 }
-
-
