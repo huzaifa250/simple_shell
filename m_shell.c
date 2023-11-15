@@ -1,14 +1,13 @@
-
 #include "shell.h"
 
 /**
- * hash - main shell loop
+ * hsh - main shell loop
  * @info: the parameter & return info struct
  * @av: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
-int hash(info_st *info, char **av)
+int hsh(info_st *info, char **av)
 {
 	ssize_t re = 0;
 	int builtin_ret = 0;
@@ -58,7 +57,7 @@ int f_builtin(info_st *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", special_exit},
-		/*{"env", my_env},*/
+		{"env", my_env},
 		{"help", my_help},
 		{"setenv", set_env},
 		{"unsetenv", unset_env},

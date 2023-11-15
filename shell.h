@@ -92,7 +92,7 @@ typedef struct liststr
 } lst_t;
 
 /* shelloop.c */
-int hash(info_st *, char **);
+int hsh(info_st *, char **);
 int f_builtin(info_st *);
 void f_cmd(info_st *);
 void fork_cmd(info_st *);
@@ -128,8 +128,9 @@ void dell_info(info_st *);
 void info_set(info_st *, char **);
 void info_free(info_st *, int);
 
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int is_chain(info_st *, char *, size_t *);
+void check_chain(info_st *, char *, size_t *, size_t, size_t);
+
 
 /*input */
 ssize_t get_input(info_st *);

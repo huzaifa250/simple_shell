@@ -7,7 +7,7 @@
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd(info_t *info, char *path)
+int is_cmd(info_st *info, char *path)
 {
 	struct stat stinfo; /*store file info */
 
