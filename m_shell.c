@@ -1,3 +1,4 @@
+
 #include "shell.h"
 
 /**
@@ -56,12 +57,12 @@ int f_builtin(info_st *info)
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", special_exit},
-		/*{"env", my_env},*/
+		//{"env", my_env},
 		{"help", my_help},
 		{"setenv", set_env},
 		{"unsetenv", unset_env},
 		{"cd", sp_cd},
-		/*{"alias", _myalias},*/
+		//{"alias", _myalias},
 		{NULL, NULL}
 	};
 
@@ -113,6 +114,45 @@ void f_cmd(info_st *info)
 		{
 			info->status = 127;
 			print_error(info, "not found\n");
+		}
+	}
+}
+
+/**
+ * fork_cmd - forks a an exec thread to run cmd
+ * @info: the parameter & return info struct
+ *
+ * Return: void
+ */
+void fork_cmd(info_st *info)
+{
+	pid_t ch_pid;
+
+	ch_pid = fork();
+	if (ch_pid == -1)
+	{
+		/* PUT ERROR FUNCTION */
+		perror("Error:");
+		return;
+	}
+	if (ch_pid == 0)
+	{
+		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		{
+			info_free(info, 1);
+			if (errno == EACCES)
+				exit(126);
+			exit(1);
+		}
+	}
+	else
+	{
+		wait(&(info->status));
+		if (WIFEXITED(info->status))
+		{
+			info->status = WEXITSTATUS(info->status);
+			if (info->status == 126)
+				print_error(info, "Permission denied\n");
 		}
 	}
 }
