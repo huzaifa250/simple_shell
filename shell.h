@@ -26,6 +26,20 @@
 
 #define CMD_CHAIN
 
+#define INFO_INIT \
+{ \
+    NULL,   /* arg */ \
+    NULL,   /* argv */ \
+    NULL,   /* path */ \
+    0,      /* argc */ \
+    0,      /* readfd */ \
+    NULL,   /* cmd_buf */ \
+    NULL,   /* env */ \
+    NULL,   /* environ */ \
+    0,      /* mode */ \
+    0,      /* flags */ \
+}
+
 extern char **environ;
 
 
@@ -58,7 +72,7 @@ typedef struct pasarinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	/*lst_t *env;*/
+	lst_t *env;
 	char **environ;
 	int env_changed;
 	int status;
@@ -124,6 +138,7 @@ int special_exit(info_st *info);
 int sp_cd(info_st *info);
 int my_help(info_st *info);
 int my_env(info_st *info);
+int populate_env_list(info_t *);
 void dell_info(info_st *);
 void info_set(info_st *, char **);
 void info_free(info_st *, int);

@@ -40,7 +40,7 @@ void info_set(info_st *info, char **av)
 		info->argc = i;
 
 		/*replace_alias(info);*/
-		replace_vars(info);
+		/*replace_vars(info);*/
 	}
 }
 
@@ -64,7 +64,7 @@ void info_free(info_st *info, int all)
 *	if (info->history)
 *			free_list(&(info->history));
 *		if (info->alias)
-*/			free_list(&(info->alias));
+*/			/*free_list(&(info->alias));*/
 		ffree(info->environ);
 			info->environ = NULL;
 		bfree((void **)info->cmd_buf);

@@ -36,7 +36,7 @@ char *dup_chars(char *pathstr, int start, int stop)
 
 	buf = malloc((stop - start + 1) * sizeof(char));
 	if (buf == NULL)
-		return;
+		return (NULL);
 
 	for (j = 0, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
@@ -53,7 +53,7 @@ char *dup_chars(char *pathstr, int start, int stop)
  *
  * Return: full path of cmd if found or NULL
  */
-char *f_path(info_t *info, char *pathstr, char *cmd)
+char *f_path(info_st *info, char *pathstr, char *cmd)
 {
 	int i = 0, cur_pors = 0;
 	char *path;

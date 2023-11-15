@@ -109,6 +109,3 @@ char *_strchr(char *str, char c)
 
 	return (NULL);
 }
-
-
-
