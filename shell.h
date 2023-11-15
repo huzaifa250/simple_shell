@@ -54,7 +54,7 @@ typedef struct pasarinfo
 	int argc;
 	unsigned int line_count;
 	int err_num;
-	/*int linecount_flag;*/
+	int linecount_flag;
 	char *fname;
 	/*lst_t *env;*/
 	char **environ;
