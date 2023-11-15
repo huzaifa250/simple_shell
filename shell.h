@@ -76,6 +76,7 @@ typedef struct pasarinfo
 	char **environ;
 	int env_changed;
 	int status;
+	char env;
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
