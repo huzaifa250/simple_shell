@@ -24,6 +24,8 @@
 
 #define CMD_NORM
 
+#define CMD_CHAIN
+
 extern char **environ;
 
 
@@ -125,6 +127,9 @@ int my_env(info_st *info);
 void dell_info(info_st *);
 void info_set(info_st *, char **);
 void info_free(info_st *, int);
+
+int is_chain(info_t *, char *, size_t *);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
 
 /*input */
 ssize_t get_input(info_st *);
