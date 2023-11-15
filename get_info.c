@@ -60,7 +60,8 @@ void info_free(info_st *info, int all)
 			free(info->arg);
 		if (info->env)
 			free_list(&(info->env));
-/*	if (info->history)
+/**
+*	if (info->history)
 *			free_list(&(info->history));
 *		if (info->alias)
 */			free_list(&(info->alias));
