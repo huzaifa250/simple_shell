@@ -24,7 +24,7 @@ void info_set(info_st *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg, " \t");
+		info->argv = strtok(info->arg, " \t");
 		if (!info->argv)
 		{
 
@@ -67,7 +67,7 @@ void info_free(info_st *info, int all)
 */			/*free_list(&(info->alias));*/
 		ffree(info->environ);
 			info->environ = NULL;
-		bfree((void **)info->cmd_buf);
+		ffree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
 		_putchar(BUF_FLUSH);

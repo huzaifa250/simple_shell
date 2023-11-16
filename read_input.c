@@ -38,9 +38,9 @@ int _getline(info_st *info, char **ptr, size_t *length)
 		return (p ? free(p), -1 : -1);
 
 	if (sl)
-		_strncat(new_pro, buf + i, l - i);
+		_strncat(new_pro, buf + i, s1 - i);
 	else
-		_strncpy(new_pro, buf + i, l - i + 1);
+		_strncpy(new_pro, buf + i, sl - i + 1);
 
 	sl += l - i;
 	i = l;
@@ -148,7 +148,7 @@ ssize_t get_input(info_st *info)
  *
  * Return: reb
  */
-ssize_t read_buf(info_st *info, char *buf, size_t *i)
+ssize_t read_buf(info_st *info, char **buf, size_t *i)
 {
 	ssize_t reb = 0;
 

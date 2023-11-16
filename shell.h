@@ -22,9 +22,9 @@
 #define USE_GETLINE
 #define USE_STRTOK
 
-#define CMD_NORM
+/*#define CMD_NORM*/
 
-#define CMD_CHAIN
+/*#define CMD_CHAIN*/
 
 #define INFO_INIT \
 { \
