@@ -68,9 +68,13 @@ ssize_t inp_buf(info_st *info, char **buf, size_t *leng)
 	{
 		free(*buf);
 		*buf = NULL; /*free it and set to null */
-		signal(SIGINT, sigint_handler());
+		signal(SIGINT, sigint_handler);
+#if USE_GETLINE
 
+		n = _getline(buf, &len_p, stdin);
+#else
 		n = _getline(info, buf, &len_p);
+#endif
 
 		if (n > 0)
 		{
