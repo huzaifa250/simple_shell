@@ -72,11 +72,10 @@ typedef struct pasarinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	lst_t *env;
+	int lst_t, *env;
 	char **environ;
 	int env_changed;
 	int status;
-	char env;
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
@@ -139,7 +138,7 @@ int special_exit(info_st *info);
 int sp_cd(info_st *info);
 int my_help(info_st *info);
 int my_env(info_st *info);
-int populate_env_list(info_t *);
+int populate_env_list(info_st *);
 void dell_info(info_st *);
 void info_set(info_st *, char **);
 void info_free(info_st *, int);

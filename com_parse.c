@@ -20,6 +20,7 @@ int is_cmd(info_st *info, char *path)
 		return (1);
 	}
 	return (0);
+}
 
 /**
  * dup_chars - duplicates characters from a specified range
