@@ -1,54 +1,35 @@
 #include "shell.h"
-
 /**
- * main - entry point
- * @ac: arg count
- * @av: arg vector
+ * main - Entery point of program
  *
- * Return: 0 (success), 1 (error)
+ * Return: 0 on success
  */
-int main(int ac, char **av)
+int main(void)
 {
-	
-	info_st info[128];
-	int fd = 2;
-	/*
-	 *while (1)
-	 {
-	 	prompt();
-		user_input(command, sizeof(command));
-		execute_comm(command);
-	 }
-	 return (0);
-	 * */
+    char *buffer = NULL; /*storage size */
+    char **av = NULL; /*arr of str or command */
+    ssize_t ex;
+    /*int exit_status = 0;*/
 
-	asm ("mov %1, %0\n\t"
-		"add $3, %0"
-		: "=r" (fd)
-		: "r" (fd));
-
-	if (ac == 2)
-	{
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-		{
-			if (errno == EACCES)
-				exit(126);
-			if (errno == ENOENT)
-			{
-				_eputs(av[0]);
-				_eputs(": 0: Can't open ");
-				_eputs(av[1]);
-				_eputchar('\n');
-				_eputchar(BUF_FLUSH);
-				exit(127);
-			}
-			return (EXIT_FAILURE);
-		}
-		info->readfd = fd;
-	}
-	/*populate_env_list(info);*/
-	hsh(info, av);
-	return (EXIT_SUCCESS);
+    while (1)
+    {
+	    prompt();
+      buffer = _read();/*read input enter by us */
+      if (*buffer != '\0')
+      {
+      	  av = tokenize(buffer);
+        	if (av == NULL)/*if tokenize faill */
+        	{
+		  			free(buffer);
+            continue;
+        	}
+          /*fullpathbuffer = _pathbuffer(av, PATH, copy);
+           if (checkbuiltins(av, buffer, exitstatus) == 1)
+              continue;
+              exitstatus = _forkprocess(av, buffer, fullpathbuffer);*/
+       }
+       else
+           free(buffer);
+      }
+      return (0);
 }
-
