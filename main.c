@@ -9,8 +9,18 @@
  */
 int main(int ac, char **av)
 {
-	info_st info[] = { INFO_INIT };
+	
+	info_st info[128];
 	int fd = 2;
+	/*
+	 *while (1)
+	 {
+	 	prompt();
+		user_input(command, sizeof(command));
+		execute_comm(command);
+	 }
+	 return (0);
+	 * */
 
 	asm ("mov %1, %0\n\t"
 		"add $3, %0"
@@ -37,47 +47,8 @@ int main(int ac, char **av)
 		}
 		info->readfd = fd;
 	}
-	populate_env_list(info);
+	/*populate_env_list(info);*/
 	hsh(info, av);
 	return (EXIT_SUCCESS);
-}
-
-/**
- * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
- *
- * Return: void
- */
-void fork_cmd(info_st *info)
-{
-	pid_t ch_pid;
-
-	ch_pid = fork();
-	if (ch_pid == -1)
-	{
-		/* PUT ERROR FUNCTION */
-		perror("Error:");
-		return;
-	}
-	if (ch_pid == 0)
-	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
-		{
-			info_free(info, 1);
-			if (errno == EACCES)
-				exit(126);
-			exit(1);
-		}
-	}
-	else
-	{
-		wait(&(info->status));
-		if (WIFEXITED(info->status))
-		{
-			info->status = WEXITSTATUS(info->status);
-			if (info->status == 126)
-				print_error(info, "Permission denied\n");
-		}
-	}
 }
 

@@ -40,7 +40,7 @@
     0,      /* flags */ \
 }
 
-extern char **environ;
+/*extern char **environ;*/
 
 
 /**
@@ -111,6 +111,10 @@ int f_builtin(info_st *);
 void f_cmd(info_st *);
 void fork_cmd(info_st *);
 
+/* main */
+void prompt(void);
+void read_data(char *command, size_t size);
+void exec_command(const char *command);
 /* parser.c */
 int is_cmd(info_st *, char *);
 char *dup_chars(char *, int, int);
@@ -129,8 +133,8 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-int _getline(info_st *, char **, size_t *);
-int prompt(info_st *);
+/*int _getline(info_st *, char **, size_t *);*/
+/*int prompt(info_st *);*/
 int is_delim(char, char *);
 char *starts_with(const char *, const char *);
 
