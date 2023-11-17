@@ -16,10 +16,10 @@ int _env(void)
     return (0);
 }
 /**
- * _getenv - gets path member from environ
- * @name: pointer to Path string
+ * _getenv - gets PATH member from environ
+ * @name: pointer to PATH string
  *
- * Return: pointer to path member string or NULL if not found
+ * Return: pointer to PATH member string or NULL if not found
  */
 char *_getenv(const char *name)
 {
@@ -38,8 +38,8 @@ char *_getenv(const char *name)
 }
 
 /**
- * is_path_var - compares path with environ to find path value
- * @s1: pointer to path string
+ * is_path_var - compares PATH with environ to find PATH value
+ * @s1: pointer to PATH string
  * @s2: pointer to environ string with actual value
  *
  * Return: 0 on success
