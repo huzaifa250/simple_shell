@@ -19,7 +19,7 @@ char *_strcpy(char *dest, char *src)
 	} while (src[i] != '\0');
 	return (dest);
 }
-***********************************************
+
 /**
  * _realloc - reallocates a block of memory
  * @ptr: pointer to previous malloc'ated block
@@ -28,6 +28,7 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: pointer to da ol'block nameen.
  */
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *p;
