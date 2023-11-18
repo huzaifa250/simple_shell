@@ -13,6 +13,8 @@
 #include <fcntl.h>
 #include <signal.h>
 
+#define BUFSIZE 1024
+
 extern char **environ;
 
 /*program flow */
@@ -40,5 +42,7 @@ char *_memset(char *s, char b, unsigned int n);
 int _strcmp(char *s1, char *s2);
 int _env(void);
 char *_getenv(const char *name);
+char *_strcpy(char *dest, char *src);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
